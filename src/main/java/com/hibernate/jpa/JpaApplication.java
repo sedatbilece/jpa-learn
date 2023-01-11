@@ -4,6 +4,10 @@ import com.hibernate.jpa.model.OneToOne.Car;
 import com.hibernate.jpa.model.OneToOne.CarRepository;
 import com.hibernate.jpa.model.OneToOne.Owner;
 import com.hibernate.jpa.model.OneToOne.OwnerRepository;
+import com.hibernate.jpa.model.OneToOne_Unidirectional.Address;
+import com.hibernate.jpa.model.OneToOne_Unidirectional.AddressRepository;
+import com.hibernate.jpa.model.OneToOne_Unidirectional.User;
+import com.hibernate.jpa.model.OneToOne_Unidirectional.UserRepository;
 import com.hibernate.jpa.model.Person;
 import com.hibernate.jpa.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -25,6 +29,17 @@ public class JpaApplication {
 		                    SpringApplication.run(JpaApplication.class, args);
 
 
+		AddressRepository addressRepository = configurableApplicationContext.getBean(AddressRepository.class);
+		UserRepository userRepository = configurableApplicationContext.getBean(UserRepository.class);
+
+		Address address = new Address("Kadıköy");
+		addressRepository.save(address);
+
+		User user =new User("sedat",address);
+		User temp =userRepository.save(user);
+
+
+		/*
 		CarRepository carRepository = configurableApplicationContext.getBean(CarRepository.class);
 		OwnerRepository ownerRepository = configurableApplicationContext.getBean(OwnerRepository.class);
 
@@ -39,7 +54,7 @@ public class JpaApplication {
 		Optional<Owner> optionalOwner = ownerRepository.findById(1L);
 
 		log.info(optionalCar.get().getModel() +" owner is"+optionalCar.get().getOwner().getName());
-
+        */
 
 		/*
 		PersonRepository personRepository =
