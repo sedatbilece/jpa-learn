@@ -1,5 +1,9 @@
 package com.hibernate.jpa;
 
+import com.hibernate.jpa.OneToMany.Cart;
+import com.hibernate.jpa.OneToMany.CartRepository;
+import com.hibernate.jpa.OneToMany.Item;
+import com.hibernate.jpa.OneToMany.ItemRepository;
 import com.hibernate.jpa.OneToMany_Unidirectional.Student;
 import com.hibernate.jpa.OneToMany_Unidirectional.StudentRepository;
 import com.hibernate.jpa.OneToMany_Unidirectional.University;
@@ -29,6 +33,18 @@ public class JpaApplication {
 		                    SpringApplication.run(JpaApplication.class, args);
 
 
+		CartRepository cartRepository =configurableApplicationContext.getBean(CartRepository.class);
+		ItemRepository itemRepository =configurableApplicationContext.getBean(ItemRepository.class);
+
+		Cart cart =new Cart("visa");
+		Item item1 = new Item("xx0432543",cart);
+		Item item2 = new Item("xx8823423",cart);
+
+		cart.setItemList(Arrays.asList(item1,item2));
+		cartRepository.save(cart);
+
+
+		/*
 		StudentRepository studentRepository =configurableApplicationContext.getBean(StudentRepository.class);
 		UniversityRepository universityRepository =configurableApplicationContext.getBean(UniversityRepository.class);
 
@@ -38,6 +54,8 @@ public class JpaApplication {
 		List<Student> students = Arrays.asList(student1,student2);
 		University university = new University("Marmara",students);
 		universityRepository.save(university);
+		 */
+
 
 		/*
 		AddressRepository addressRepository = configurableApplicationContext.getBean(AddressRepository.class);
