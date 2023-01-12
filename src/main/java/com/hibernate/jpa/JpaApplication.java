@@ -1,5 +1,9 @@
 package com.hibernate.jpa;
 
+import com.hibernate.jpa.ManyToMany.Stream;
+import com.hibernate.jpa.ManyToMany.StreamRepository;
+import com.hibernate.jpa.ManyToMany.Viewer;
+import com.hibernate.jpa.ManyToMany.ViewerRepository;
 import com.hibernate.jpa.OneToMany.Cart;
 import com.hibernate.jpa.OneToMany.CartRepository;
 import com.hibernate.jpa.OneToMany.Item;
@@ -33,6 +37,27 @@ public class JpaApplication {
 		                    SpringApplication.run(JpaApplication.class, args);
 
 
+		StreamRepository streamRepository = configurableApplicationContext.getBean(StreamRepository.class);
+		ViewerRepository viewerRepository = configurableApplicationContext.getBean(ViewerRepository.class);
+
+		Viewer viewer1 = new Viewer("sedat1");
+		Viewer viewer2 = new Viewer("sedat12");
+		Viewer viewer3 = new Viewer("sedat123");
+		List<Viewer> viewerList = Arrays.asList(viewer1,viewer2,viewer3);
+
+		Stream stream1 = new Stream ("techTalk");
+		Stream stream2 = new Stream ("GamimgStream");
+		List<Stream> streamList = Arrays.asList(stream1,stream2);
+
+		streamRepository.saveAll(streamList);// stream1 and stream2 added to Stream table
+
+		// associations
+		viewer1.followStream(stream2);
+		viewer2.followStream(stream2);
+		viewer3.followStream(stream1);
+
+		viewerRepository.saveAll(viewerList);// viewers added to Viewer table
+        /*
 		CartRepository cartRepository =configurableApplicationContext.getBean(CartRepository.class);
 		ItemRepository itemRepository =configurableApplicationContext.getBean(ItemRepository.class);
 
@@ -42,7 +67,7 @@ public class JpaApplication {
 
 		cart.setItemList(Arrays.asList(item1,item2));
 		cartRepository.save(cart);
-
+        */
 
 		/*
 		StudentRepository studentRepository =configurableApplicationContext.getBean(StudentRepository.class);
