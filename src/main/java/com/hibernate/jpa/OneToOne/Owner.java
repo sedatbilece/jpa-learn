@@ -1,4 +1,4 @@
-package com.hibernate.jpa.model.OneToOne;
+package com.hibernate.jpa.OneToOne;
 
 
 import jakarta.persistence.*;

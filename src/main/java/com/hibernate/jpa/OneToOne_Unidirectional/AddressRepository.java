@@ -1,4 +1,4 @@
-package com.hibernate.jpa.model.OneToOne_Unidirectional;
+package com.hibernate.jpa.OneToOne_Unidirectional;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

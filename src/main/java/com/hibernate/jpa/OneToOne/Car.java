@@ -1,6 +1,5 @@
-package com.hibernate.jpa.model.OneToOne;
+package com.hibernate.jpa.OneToOne;
 
-import com.hibernate.jpa.model.OneToOne.Owner;
 import jakarta.persistence.*;
 
 @Entity

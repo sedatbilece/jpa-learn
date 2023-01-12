@@ -1,22 +1,14 @@
 package com.hibernate.jpa;
 
-import com.hibernate.jpa.model.OneToOne.Car;
-import com.hibernate.jpa.model.OneToOne.CarRepository;
-import com.hibernate.jpa.model.OneToOne.Owner;
-import com.hibernate.jpa.model.OneToOne.OwnerRepository;
-import com.hibernate.jpa.model.OneToOne_Unidirectional.Address;
-import com.hibernate.jpa.model.OneToOne_Unidirectional.AddressRepository;
-import com.hibernate.jpa.model.OneToOne_Unidirectional.User;
-import com.hibernate.jpa.model.OneToOne_Unidirectional.UserRepository;
-import com.hibernate.jpa.model.Person;
-import com.hibernate.jpa.repository.PersonRepository;
+import com.hibernate.jpa.OneToOne_Unidirectional.Address;
+import com.hibernate.jpa.OneToOne_Unidirectional.AddressRepository;
+import com.hibernate.jpa.OneToOne_Unidirectional.User;
+import com.hibernate.jpa.OneToOne_Unidirectional.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.Optional;
 
 @SpringBootApplication
 public class JpaApplication {
